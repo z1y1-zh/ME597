@@ -1,3 +1,5 @@
+import os
+from glob import glob
 from setuptools import find_packages, setup
 
 package_name = 'task_1'
@@ -14,6 +16,10 @@ setup(
         (
             'share/' + package_name,
             ['package.xml'],
+        ),
+	        (
+            os.path.join('share', package_name, 'launch'),
+            glob('launch/*.py'),
         ),
     ],
     install_requires=['setuptools'],
