@@ -8,7 +8,8 @@ class JointSubscriber(Node):
 
     def __init__(self):
         super().__init__('joint_subscriber')
-
+	
+	# Subscribe to custom JointData messages from joint_topic.
         self.subscription = self.create_subscription(
             JointData,
             'joint_topic',
@@ -17,6 +18,7 @@ class JointSubscriber(Node):
         )
 
     def listener_callback(self, msg):
+	#Log all data received in the JointData message.
         self.get_logger().info(
             f'Received: center=({msg.center.x:.1f}, '
             f'{msg.center.y:.1f}, {msg.center.z:.1f}), '

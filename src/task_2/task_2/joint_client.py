@@ -10,7 +10,8 @@ class JointClient(Node):
 
     def __init__(self):
         super().__init__('joint_client')
-
+	
+	# Creat a client which connects to the joint_service.
         self.client = self.create_client(
             JointState,
             'joint_service'
@@ -27,7 +28,8 @@ class JointClient(Node):
         self.request.x = float(x)
         self.request.y = float(y)
         self.request.z = float(z)
-
+	
+	# Send the request asynchronously and return its future result.
         return self.client.call_async(self.request)
 
 

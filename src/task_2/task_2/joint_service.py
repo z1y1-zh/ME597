@@ -8,7 +8,8 @@ class JointService(Node):
 
     def __init__(self):
         super().__init__('joint_service_server')
-
+	# Provide the custom JointState service on joint_service.
+	
         self.service = self.create_service(
             JointState,
             'joint_service',
@@ -19,7 +20,7 @@ class JointService(Node):
 
     def service_callback(self, request, response):
         total = request.x + request.y + request.z
-
+	# Return True when the sum is greater than or equal to zero.
         response.valid = total >= 0.0
 
         self.get_logger().info(

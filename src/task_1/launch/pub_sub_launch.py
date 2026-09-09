@@ -3,6 +3,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
+    # Start the publisher and subscriber nodes together
     return LaunchDescription([
         Node(
             package='task_1',

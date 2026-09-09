@@ -9,6 +9,8 @@ class JointPublisher(Node):
     def __init__(self):
         super().__init__('joint_publisher')
 
+	# Publish custom JointData messages on joint_topic.
+	
         self.publisher_ = self.create_publisher(
             JointData,
             'joint_topic',
@@ -20,7 +22,8 @@ class JointPublisher(Node):
 
     def timer_callback(self):
         msg = JointData()
-
+	
+	#Input position and velocity data to the message.
         msg.center.x = self.count
         msg.center.y = self.count + 1.0
         msg.center.z = self.count + 2.0
